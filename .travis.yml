@@ -21,6 +21,6 @@ cache:
 before_install:
   - sh bootstrap.sh
 install:
-  - bin/buildout -N
+  - bin/buildout -N -c buildout.cfg.example
 script:
   - ./run_tests.sh
