@@ -1,5 +1,6 @@
 #!/bin/sh
 
-for i in $(find src -type d | grep "tests"); do
-    bin/py.test $i/
+dir=`pwd`
+for i in src/*; do
+    cd $dir/$i/ && ./../../bin/py.test .
 done
