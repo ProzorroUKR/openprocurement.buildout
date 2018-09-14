@@ -23,4 +23,4 @@ before_install:
 install:
   - bin/buildout -N -c buildout.cfg.example
 script:
-  - ./run_tests.sh
+  - bin/py.test src/*
