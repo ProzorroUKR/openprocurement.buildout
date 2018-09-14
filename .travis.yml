@@ -12,6 +12,7 @@ services:
 env:
   global:
     - TZ=Europe/Kiev
+    - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py"
   matrix:
     - MODULE=openprocurement.api
     - MODULE=openprocurement.archivarius.plans
@@ -39,5 +40,5 @@ before_install:
 install:
   - bin/buildout -N -c buildout.cfg.example
 script:
-  - bin/py.test src/$MODULE/
-  - SANDBOX_MODE=True bin/py.test src/$MODULE
+  - bin/py.test src/$MODULE/ $PYTEST_AGRS
+  - SANDBOX_MODE=True bin/py.test src/$MODULE $PYTEST_AGRS
