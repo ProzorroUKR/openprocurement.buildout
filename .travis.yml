@@ -13,8 +13,24 @@ env:
   global:
     - TZ=Europe/Kiev
   matrix:
-    - SANDBOX_MODE=
-    - SANDBOX_MODE=True
+    - MODULE=openprocurement.api
+    - MODULE=openprocurement.archivarius.plans
+    - MODULE=openprocurement.contracting.api
+    - MODULE=openprocurement.planning.api
+    - MODULE=openprocurement.tender.core
+    - MODULE=openprocurement.tender.openeu
+    - MODULE=openprocurement.archivarius.contracts
+    - MODULE=openprocurement.archivarius.tenders
+    - MODULE=openprocurement.historical.core
+    - MODULE=openprocurement.tender.belowthreshold
+    - MODULE=openprocurement.tender.esco
+    - MODULE=openprocurement.tender.openua
+    - MODULE=openprocurement.archivarius.core
+    - MODULE=openprocurement.concord
+    - MODULE=openprocurement.historical.tender
+    - MODULE=openprocurement.tender.competitivedialogue
+    - MODULE=openprocurement.tender.limited
+    - MODULE=openprocurement.tender.openuadefense
 cache:
   directories:
     - eggs
@@ -23,4 +39,5 @@ before_install:
 install:
   - bin/buildout -N -c buildout.cfg.example
 script:
-  - bin/py.test src/*
+  - bin/py.test src/$MODULE/
+  - SANDBOX_MODE=True bin/py.test src/$MODULE
