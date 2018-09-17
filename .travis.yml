@@ -39,6 +39,8 @@ env:
     - MODULE=openprocurement.tender.esco SANDBOX_MODE=True
     - MODULE=openprocurement.tender.openua
     - MODULE=openprocurement.tender.openua SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.cfaua
+    - MODULE=openprocurement.tender.cfaua SANDBOX_MODE=True
     - MODULE=openprocurement.archivarius.core
     - MODULE=openprocurement.archivarius.core SANDBOX_MODE=True
     - MODULE=openprocurement.concord
