@@ -13,6 +13,7 @@ env:
   global:
     - TZ=Europe/Kiev
     - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py"
+    - BOTO_CONFIG=/dev/null
   matrix:
     - MODULE=openprocurement.api
     - MODULE=openprocurement.api SANDBOX_MODE=True
