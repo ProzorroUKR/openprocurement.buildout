@@ -14,26 +14,42 @@ env:
     - TZ=Europe/Kiev
     - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py"
   matrix:
-    - SANDBOX_MODE=True
-    - SANDBOX_MODE=False
-    - MODULE=openprocurement.api
-    - MODULE=openprocurement.archivarius.plans
-    - MODULE=openprocurement.contracting.api
-    - MODULE=openprocurement.planning.api
-    - MODULE=openprocurement.tender.core
-    - MODULE=openprocurement.tender.openeu
-    - MODULE=openprocurement.archivarius.contracts
-    - MODULE=openprocurement.archivarius.tenders
-    - MODULE=openprocurement.historical.core
-    - MODULE=openprocurement.tender.belowthreshold
-    - MODULE=openprocurement.tender.esco
-    - MODULE=openprocurement.tender.openua
-    - MODULE=openprocurement.archivarius.core
-    - MODULE=openprocurement.concord
-    - MODULE=openprocurement.historical.tender
-    - MODULE=openprocurement.tender.competitivedialogue
-    - MODULE=openprocurement.tender.limited
-    - MODULE=openprocurement.tender.openuadefense
+    - MODULE=openprocurement.api SANDBOX_MODE=True
+    - MODULE=openprocurement.api SANDBOX_MODE=False
+    - MODULE=openprocurement.archivarius.plans SANDBOX_MODE=True
+    - MODULE=openprocurement.archivarius.plans SANDBOX_MODE=False
+    - MODULE=openprocurement.contracting.api SANDBOX_MODE=True
+    - MODULE=openprocurement.contracting.api SANDBOX_MODE=False
+    - MODULE=openprocurement.planning.api SANDBOX_MODE=True
+    - MODULE=openprocurement.planning.api SANDBOX_MODE=False
+    - MODULE=openprocurement.tender.core SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.core SANDBOX_MODE=False
+    - MODULE=openprocurement.tender.openeu SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.openeu SANDBOX_MODE=False
+    - MODULE=openprocurement.archivarius.contracts SANDBOX_MODE=True
+    - MODULE=openprocurement.archivarius.contracts SANDBOX_MODE=False
+    - MODULE=openprocurement.archivarius.tenders SANDBOX_MODE=True
+    - MODULE=openprocurement.archivarius.tenders SANDBOX_MODE=False
+    - MODULE=openprocurement.historical.core SANDBOX_MODE=True
+    - MODULE=openprocurement.historical.core SANDBOX_MODE=False
+    - MODULE=openprocurement.tender.belowthreshold SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.belowthreshold SANDBOX_MODE=False
+    - MODULE=openprocurement.tender.esco SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.esco SANDBOX_MODE=False
+    - MODULE=openprocurement.tender.openua SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.openua SANDBOX_MODE=False
+    - MODULE=openprocurement.archivarius.core SANDBOX_MODE=True
+    - MODULE=openprocurement.archivarius.core SANDBOX_MODE=False
+    - MODULE=openprocurement.concord SANDBOX_MODE=True
+    - MODULE=openprocurement.concord SANDBOX_MODE=False
+    - MODULE=openprocurement.historical.tender SANDBOX_MODE=True
+    - MODULE=openprocurement.historical.tender SANDBOX_MODE=False
+    - MODULE=openprocurement.tender.competitivedialogue SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.competitivedialogue SANDBOX_MODE=False
+    - MODULE=openprocurement.tender.limited SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.limited SANDBOX_MODE=False
+    - MODULE=openprocurement.tender.openuadefense SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.openuadefense SANDBOX_MODE=False
 cache:
   directories:
     - eggs
@@ -43,4 +59,3 @@ install:
   - bin/buildout -N -c buildout.cfg.example
 script:
   - bin/py.test src/$MODULE/ $PYTEST_AGRS
-   bin/py.test src/$MODULE $PYTEST_AGRS
