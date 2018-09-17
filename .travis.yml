@@ -15,6 +15,14 @@ env:
     - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py"
     - BOTO_CONFIG=/dev/null
   matrix:
+    - MODULE=openprocurement.tender.competitivedialogue
+    - MODULE=openprocurement.tender.competitivedialogue SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.openeu
+    - MODULE=openprocurement.tender.openeu SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.esco
+    - MODULE=openprocurement.tender.esco SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.cfaua
+    - MODULE=openprocurement.tender.cfaua SANDBOX_MODE=True
     - MODULE=openprocurement.api
     - MODULE=openprocurement.api SANDBOX_MODE=True
     - MODULE=openprocurement.archivarius.plans
@@ -25,8 +33,6 @@ env:
     - MODULE=openprocurement.planning.api SANDBOX_MODE=True
     - MODULE=openprocurement.tender.core
     - MODULE=openprocurement.tender.core SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.openeu
-    - MODULE=openprocurement.tender.openeu SANDBOX_MODE=True
     - MODULE=openprocurement.archivarius.contracts
     - MODULE=openprocurement.archivarius.contracts SANDBOX_MODE=True
     - MODULE=openprocurement.archivarius.tenders
@@ -35,20 +41,14 @@ env:
     - MODULE=openprocurement.historical.core SANDBOX_MODE=True
     - MODULE=openprocurement.tender.belowthreshold
     - MODULE=openprocurement.tender.belowthreshold SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.esco
-    - MODULE=openprocurement.tender.esco SANDBOX_MODE=True
     - MODULE=openprocurement.tender.openua
     - MODULE=openprocurement.tender.openua SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.cfaua
-    - MODULE=openprocurement.tender.cfaua SANDBOX_MODE=True
     - MODULE=openprocurement.archivarius.core
     - MODULE=openprocurement.archivarius.core SANDBOX_MODE=True
     - MODULE=openprocurement.concord
     - MODULE=openprocurement.concord SANDBOX_MODE=True
     - MODULE=openprocurement.historical.tender
     - MODULE=openprocurement.historical.tender SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.competitivedialogue
-    - MODULE=openprocurement.tender.competitivedialogue SANDBOX_MODE=True
     - MODULE=openprocurement.tender.limited
     - MODULE=openprocurement.tender.limited SANDBOX_MODE=True
     - MODULE=openprocurement.tender.openuadefense
