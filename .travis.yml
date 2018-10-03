@@ -1,0 +1,64 @@
+language: python
+sudo: required
+group: deprecated-2017Q4
+before_script:
+  - sudo add-apt-repository ppa:chris-lea/libsodium -y
+  - sudo apt-get -qq update
+  - sudo apt-get install libsodium13 -y
+python:
+  - "2.7"
+services:
+  - couchdb
+env:
+  global:
+    - TZ=Europe/Kiev
+    - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py"
+    - BOTO_CONFIG=/dev/null
+  matrix:
+    - MODULE=openprocurement.tender.competitivedialogue
+    - MODULE=openprocurement.tender.competitivedialogue SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.openeu
+    - MODULE=openprocurement.tender.openeu SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.esco
+    - MODULE=openprocurement.tender.esco SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.cfaua
+    - MODULE=openprocurement.tender.cfaua SANDBOX_MODE=True
+    - MODULE=openprocurement.api
+    - MODULE=openprocurement.api SANDBOX_MODE=True
+    - MODULE=openprocurement.archivarius.plans
+    - MODULE=openprocurement.archivarius.plans SANDBOX_MODE=True
+    - MODULE=openprocurement.contracting.api
+    - MODULE=openprocurement.contracting.api SANDBOX_MODE=True
+    - MODULE=openprocurement.planning.api
+    - MODULE=openprocurement.planning.api SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.core
+    - MODULE=openprocurement.tender.core SANDBOX_MODE=True
+    - MODULE=openprocurement.archivarius.contracts
+    - MODULE=openprocurement.archivarius.contracts SANDBOX_MODE=True
+    - MODULE=openprocurement.archivarius.tenders
+    - MODULE=openprocurement.archivarius.tenders SANDBOX_MODE=True
+    - MODULE=openprocurement.historical.core
+    - MODULE=openprocurement.historical.core SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.belowthreshold
+    - MODULE=openprocurement.tender.belowthreshold SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.openua
+    - MODULE=openprocurement.tender.openua SANDBOX_MODE=True
+    - MODULE=openprocurement.archivarius.core
+    - MODULE=openprocurement.archivarius.core SANDBOX_MODE=True
+    - MODULE=openprocurement.concord
+    - MODULE=openprocurement.concord SANDBOX_MODE=True
+    - MODULE=openprocurement.historical.tender
+    - MODULE=openprocurement.historical.tender SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.limited
+    - MODULE=openprocurement.tender.limited SANDBOX_MODE=True
+    - MODULE=openprocurement.tender.openuadefense
+    - MODULE=openprocurement.tender.openuadefense SANDBOX_MODE=True
+cache:
+  directories:
+    - eggs
+before_install:
+  - sh bootstrap.sh
+install:
+  - bin/buildout -N -c buildout.cfg.example
+script:
+  - bin/py.test src/$MODULE/ $PYTEST_AGRS
