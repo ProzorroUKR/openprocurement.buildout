@@ -1,3 +1,7 @@
+Develop build status: [![Build Status](https://travis-ci.org/ProzorroUKR/openprocurement.buildout.svg?branch=dp-dev)](https://travis-ci.org/ProzorroUKR/openprocurement.buildout)
+
+
+
 # openprocurement.buildout
 Development Buildout of OpenProcurement
 
