@@ -2,63 +2,66 @@ language: python
 sudo: required
 group: deprecated-2017Q4
 before_script:
-  - sudo add-apt-repository ppa:chris-lea/libsodium -y
-  - sudo apt-get -qq update
-  - sudo apt-get install libsodium13 -y
+- sudo add-apt-repository ppa:chris-lea/libsodium -y
+- sudo apt-get -qq update
+- sudo apt-get install libsodium13 -y
 python:
-  - "2.7"
+- '2.7'
 services:
-  - couchdb
+- couchdb
 env:
   global:
-    - TZ=Europe/Kiev
-    - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py"
-    - BOTO_CONFIG=/dev/null
+  - TZ=Europe/Kiev
+  - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py"
+  - BOTO_CONFIG=/dev/null
   matrix:
-    - MODULE=openprocurement.tender.competitivedialogue
-    - MODULE=openprocurement.tender.competitivedialogue SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.openeu
-    - MODULE=openprocurement.tender.openeu SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.esco
-    - MODULE=openprocurement.tender.esco SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.cfaua
-    - MODULE=openprocurement.tender.cfaua SANDBOX_MODE=True
-    - MODULE=openprocurement.api
-    - MODULE=openprocurement.api SANDBOX_MODE=True
-    - MODULE=openprocurement.archivarius.plans
-    - MODULE=openprocurement.archivarius.plans SANDBOX_MODE=True
-    - MODULE=openprocurement.contracting.api
-    - MODULE=openprocurement.contracting.api SANDBOX_MODE=True
-    - MODULE=openprocurement.planning.api
-    - MODULE=openprocurement.planning.api SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.core
-    - MODULE=openprocurement.tender.core SANDBOX_MODE=True
-    - MODULE=openprocurement.archivarius.contracts
-    - MODULE=openprocurement.archivarius.contracts SANDBOX_MODE=True
-    - MODULE=openprocurement.archivarius.tenders
-    - MODULE=openprocurement.archivarius.tenders SANDBOX_MODE=True
-    - MODULE=openprocurement.historical.core
-    - MODULE=openprocurement.historical.core SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.belowthreshold
-    - MODULE=openprocurement.tender.belowthreshold SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.openua
-    - MODULE=openprocurement.tender.openua SANDBOX_MODE=True
-    - MODULE=openprocurement.archivarius.core
-    - MODULE=openprocurement.archivarius.core SANDBOX_MODE=True
-    - MODULE=openprocurement.concord
-    - MODULE=openprocurement.concord SANDBOX_MODE=True
-    - MODULE=openprocurement.historical.tender
-    - MODULE=openprocurement.historical.tender SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.limited
-    - MODULE=openprocurement.tender.limited SANDBOX_MODE=True
-    - MODULE=openprocurement.tender.openuadefense
-    - MODULE=openprocurement.tender.openuadefense SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.competitivedialogue
+  - MODULE=openprocurement.tender.competitivedialogue SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.openeu
+  - MODULE=openprocurement.tender.openeu SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.esco
+  - MODULE=openprocurement.tender.esco SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.cfaua
+  - MODULE=openprocurement.tender.cfaua SANDBOX_MODE=True
+  - MODULE=openprocurement.api
+  - MODULE=openprocurement.api SANDBOX_MODE=True
+  - MODULE=openprocurement.archivarius.plans
+  - MODULE=openprocurement.archivarius.plans SANDBOX_MODE=True
+  - MODULE=openprocurement.contracting.api
+  - MODULE=openprocurement.contracting.api SANDBOX_MODE=True
+  - MODULE=openprocurement.planning.api
+  - MODULE=openprocurement.planning.api SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.core
+  - MODULE=openprocurement.tender.core SANDBOX_MODE=True
+  - MODULE=openprocurement.archivarius.contracts
+  - MODULE=openprocurement.archivarius.contracts SANDBOX_MODE=True
+  - MODULE=openprocurement.archivarius.tenders
+  - MODULE=openprocurement.archivarius.tenders SANDBOX_MODE=True
+  - MODULE=openprocurement.historical.core
+  - MODULE=openprocurement.historical.core SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.belowthreshold
+  - MODULE=openprocurement.tender.belowthreshold SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.openua
+  - MODULE=openprocurement.tender.openua SANDBOX_MODE=True
+  - MODULE=openprocurement.archivarius.core
+  - MODULE=openprocurement.archivarius.core SANDBOX_MODE=True
+  - MODULE=openprocurement.concord
+  - MODULE=openprocurement.concord SANDBOX_MODE=True
+  - MODULE=openprocurement.historical.tender
+  - MODULE=openprocurement.historical.tender SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.limited
+  - MODULE=openprocurement.tender.limited SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.openuadefense
+  - MODULE=openprocurement.tender.openuadefense SANDBOX_MODE=True
 cache:
   directories:
-    - eggs
+  - eggs
 before_install:
-  - sh bootstrap.sh
+- sh bootstrap.sh
 install:
-  - bin/buildout -N -c buildout.cfg.example
+- bin/buildout -N -c buildout.cfg.example
 script:
-  - bin/py.test src/$MODULE/ $PYTEST_AGRS
+- bin/py.test src/$MODULE/ $PYTEST_AGRS
+notifications:
+  slack:
+    secure: F+1GhOM/TpXWE6FM99ctDxgYyLTfhf0lxWFnT79BmY8qcaXWGDY6mTP36s/ry6DHGrvDdZcWTuDijyZlsrLnRuUAQENFzES3/P0wo9V4ENnrbbEwKGoM4wldLONVceuEt6nWKnL8OvL8g3at/Kv2vUe1ctqRz0Hb3jva1o0hNjTFxJUYASmjMumbYSakluaaeCszIfyFbUsFK266O7Mx6EzEbPfKr+ZNH2tOwcuYCHijyTDkVNpNB1/BEzSRMwsUOsuCkgiFdGGoNWgoDqStD1BFqCJZPgSlT0dnqpjXhWRzAAN8KB0EAfLTqjMLoFKukQNaXmLiKhw5FyWdUbDBZejxK1edMxtozKxzu4h7cznCtJqZcvnJjexjLQ5xQrwwLe9iArlf5mVQaM7CD7Qg4fr7xIBBJ9NkayJJVWpnl2WVN+rf0PggrAIa2MOoiPd/+r+ZPO4TsUeYUhDK7Mr/Nx+BwxHGKLLfJlHarEPTj9Z2CrI9jpyG9KU8dL5FmGBjqefwTEolNUSTTdqNyMlTh+Q1tUht4z7w0AfdEng6juEd9o3kh7CTW0vwcTzVtO5X+kk7Dtgn4UAuy4gN1mFYf5weHJI8ruBsIFAEgRf0mbUz37V9EYFtHiN4tdZCWDfK0FHFWAZa6sbyGAVYQFn+jta0DsQJo1vU0oQyGEJKkiA=
