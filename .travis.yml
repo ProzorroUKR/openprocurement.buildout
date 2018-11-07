@@ -59,7 +59,8 @@ cache:
 before_install:
 - sh bootstrap.sh
 install:
-- bin/buildout -N -c buildout.cfg.example
+- . ./travis_branch.sh
+- bin/buildout -N -c buildout.cfg.example remotes:branch=$BRANCH
 script:
 - bin/py.test src/$MODULE/ $PYTEST_AGRS
 notifications:
