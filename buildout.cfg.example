@@ -1,8 +1,11 @@
 [buildout]
-extends =
-	profiles/devel.cfg
-	profiles/docs.cfg
+extends = profiles/test.cfg
 
 [versions]
 cffi = 1.4.1
 cryptography = 1.2.3
+
+[openprocurement.api.ini]
+aws_s3_bucket =
+aws_access_key =
+aws_secret_key =
