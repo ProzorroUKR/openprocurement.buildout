@@ -23,8 +23,14 @@ env:
   - MODULE=openprocurement.tender.esco SANDBOX_MODE=True
   - MODULE=openprocurement.tender.cfaua
   - MODULE=openprocurement.tender.cfaua SANDBOX_MODE=True
+  - MODULE=openprocurement.tender.cfaselectionua
+  - MODULE=openprocurement.tender.cfaselectionua SANDBOX_MODE=True
   - MODULE=openprocurement.api
   - MODULE=openprocurement.api SANDBOX_MODE=True
+  - MODULE=openprocurement.agreement.core
+  - MODULE=openprocurement.agreement.core SANDBOX_MODE=True
+  - MODULE=openprocurement.agreement.cfaua
+  - MODULE=openprocurement.agreement.cfaua SANDBOX_MODE=True
   - MODULE=openprocurement.archivarius.plans
   - MODULE=openprocurement.archivarius.plans SANDBOX_MODE=True
   - MODULE=openprocurement.contracting.api
