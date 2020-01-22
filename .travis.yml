@@ -11,7 +11,7 @@ services:
 env:
   global:
   - TZ=Europe/Kiev
-  - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py"
+  - PYTEST_AGRS="--ignore src/openprocurement.archivarius.core/openprocurement/archivarius/core/tests/bridge.py --maxfail=1"
   - BOTO_CONFIG=/dev/null
   matrix:
   - MODULE=openprocurement.api
