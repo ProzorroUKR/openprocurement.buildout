@@ -8,6 +8,9 @@ python:
 - '2.7'
 services:
 - couchdb
+addons:
+  hosts:
+    - couchdb
 env:
   global:
   - TZ=Europe/Kiev
